@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Webseite</title>
+    <style>
+    body {
+font-family: arial, sans-serif;
+font-size: 9pt;
+margin: 0;
+padding: 0;
+text-align: left;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+height: 100vh;
+overflow: hidden; /* Verhindert das Scrollen der gesamten Seite */
+}
+
+nav {
+position: absolute;
+top: 0;
+width: 100%; /* Volle Breite für die Navigation */
+z-index: 1002; /* Hohe Z-Index, um über anderen Inhalt zu liegen */
+}
+
+nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+justify-content: flex-start;
+}
+
+nav ul li {
+position: relative; /* Position relativ für Pop-up */
+}
+
+nav ul li a {
+color: #fff;
+padding: 1pt 3pt; /* Abstand innerhalb der Boxen */
+display: inline-block;
+text-decoration: none;
+background-color: #00FFFF; /* Hintergrundfarbe der Boxen */
+text-align: center; /* Textzentrierung */
+margin-right: 10px; /* Abstand nur zwischen den Boxen */
+}
+
+
+.popup {
+display: none; /* Standardmäßig versteckt */
+position: absolute;
+top: calc(100% + 150px); /* Unterhalb des Links mit etwas Abstand */
+left: 0;
+background-color: #fff;
+padding: 10px;
+z-index: 1000; /* Hohe Z-Index, um über anderen Inhalt zu liegen */
+width: 300px; /* Breite des Pop-up-Fensters */
+}
+
+.gallery {
+position: relative;
+max-width: 100%; /* Vollständige Breite des Viewports */
+width: 100%;
+height: 100vh; /* Vollständige Höhe des Viewports */
+overflow: hidden; /* Verhindert horizontales Scrollen */
+flex: 1; /* Füllt den verfügbaren Platz im flexiblen Container (body) */
+}
+
+.slides {
+display: flex;
+transition: transform 0.5s ease;
+height: 100%; /* Höhe der Galerie */
+}
+
+.slide {
+min-width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.slide img, .slide video {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+}
+.slide-container {
+position: relative; width: 560px; /* Gleiche Breite wie das Video */
+height: 315px; /* Gleiche Höhe wie das Video */ }
+iframe { position: absolute; top: 27%; left: 27%; width: 45%; height: 45%; z-index: 1; /* Das Video wird über dem Bild angezeigt */ }
+img { width: 100%; height: 100%; object-fit: cover; z-index: 0; /* Das Bild liegt unter dem Video */
+position: absolute; top: 0; left: 0; /* Bild halb transparent */ }
+
+.arrow {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 12px;
+color: #00FFFF;
+text-decoration: none;
+z-index: 2000;
+}
+
+.arrow.left {
+left: 10px;
+}
+
+.arrow.right {
+right: 10px;
+}
+
+main {
+flex: 1; /* Nimmt den verfügbaren Platz im flexiblen Container (body) */
+}
+
+footer {
+background-color: #333; /* Beispielhafte Hintergrundfarbe */
+color: #fff;
+padding: 10px;
+text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+       <ul>
+           <li><a href="#about">Über mich</a>
+               <div class="popup">
+                   <p>Hallo! Ich bin Jule Oberg und das ist mein Portfolio.
+                     <br>Ich studiere in der Klasse für Systemdesign <br> bei Prof. Maureen Mooren an der HGB Leipzig. <br> Über die Pfeile könnt ihr durch meine Arbeiten klicken :)
+                    </p>
+               </div>
+           </li>
+           <li><a href="#contact">Kontakt</a>
+               <div class="popup">
+                   <p>jule.oberg@gmx.de
+                   <br>+49 1573 5218434
+                   <br>@juleoberg_
+               </div>
+           </li>
+           <li><a href="#description">Info</a>
+               <div class="popup">
+                   <p>Dies ist eine Zusammenstellung von Arbeiten zur Bewerbung auf ein Praktikum an der Weserburg Bremen <br>
+                   <br> 2024:
+                   <br> Publikationen mit Mixtapes meiner Kommilitonen im Sommersemester 24; auf CD gebrannt; Siebdruck & Digitaldruck, Auflage 2
+                   <br> Animationsfilm für die Ausstellung "200 Jahre Anton Bruckner" im Stift St. Florian, kuratiert von Paule Hammer <br>
+                   <br> 2023:
+                   <br> Serie von analogen S/W-Fotografien aus meinem Erasmus in Neapel im WiSe, im Labor entwickelt
+                   <br> Plakat für ein Tool zum Schattenwurf mit Type im Rahmen eines Workshops mit Stefan Müller
+                   <br> --> hier gehts zum <a href="https://www.hgb-leipzig.de/~jmo/" target="_blank">TOOL</a>
+                   <br> Webgestaltung für <a href="https://annehampel.de/" target="_blank">Anne Hampel</a> <br>
+                   <br> 2022:
+                   <br> Publikation zu einem Gespräch zwischen mir und Type-Designerin Samara Keller, Auflage 5
+                   <br> Doppelseite zur Künstlerin "She Adana" für ein hochschulinternes Musikmagazin
+                   <br> Notizbuch mit Festeinband und Covergestaltung
+                   <br> Covergestaltung für das Semesterprojekt "La poesie est dans la rue" bei Prof. Markus Dreßen, Auflage 100
+                   <br> Stehlampe und Filmvorspann, inspiriert von dem Stück "Warten auf Godot" für das 3-teilige Semesterprojekt bei Prof. Markus Dreßen (Lampe hergestellt zusammen mit Ruprecht Holsten in Horstedt)<br>
+                   <br> 2021:
+                   <br> Stop-Motion-Animationsfilm aus 400 Bleistiftzeichnungen für das Semesterprojekt bei Paule Hammer
+                   <br> erste Studienübung im Handsatz
+
+            </p>
+               </div>
+           </li>
+       </ul>
+    </nav>
+    <main>
+      <div class="gallery">
+           <div class="slides"> <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/p3jk9odds05oq56d0fe52/_MG_4051.jpg?rlkey=jbza600i4sbh5ha0j54ve6264&st=9gnu340l?raw=1" alt="Dropbox Bild"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/vco7irhjnefp7vn8dto7n/IMG_8743.jpg?rlkey=8set1e1k8eib1cyrr64fxolpg&st=jhj3rfe1?raw=1" alt="CD2"/> </div>
+           <div class="slide"> <iframe src="https://www.youtube.com/embed/jVMQ66u-RUY?start=42" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <img src="https://dl.dropboxusercontent.com/scl/fi/bruovwlkm3rhkqarugzid/AF64C78A-DB18-431E-B9E7-132B3D2B7FE4-2.JPG?rlkey=q1d8k8p5n5yeezxxnqhbpp79r&st=sq8om3qt?raw=1" alt="BKino"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/2zk0hkidvwko03elx6if0/IMG_7931.jpg?rlkey=llzem4q24deys69ltij2my1d6&st=ua2fame6?raw=1" alt="Neapel"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/r2nip68lt5gp2yj9pkbt6/FuseTypeTool-Kopie.jpg?rlkey=bfy2abcsbsinoivu61mxcei0o&st=l7xok79v?raw=1" alt="Emilia"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/95mi28pb4m6ed1c8wz0kb/IMG_9224.jpg?rlkey=a5vw1rak8r4254oaou9u2cbwy&st=zwgg4fxs?raw=1" alt="Anne"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/hq83uz7w3pgqb29wr38po/Samara-Keller-Interview.jpg?rlkey=4enhwm0ynhpbtyvfxqg9cpzo3&st=c93grb6q?raw=1" alt="1"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/dr3cadn3jdmmk5acgatsn/Samara-Keller-Interview2.jpg?rlkey=y8yugirps92gldh1w1w5tj1z3&st=ltwop0ij?raw=1" alt="2"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/8lthse96m06ziy2nv99c1/She-Adana-4-copy.jpg?rlkey=9cbzvqnlhy3p56p1vog5lxs9e&st=on1wsjfd?raw=1" alt="Heft"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/2esdnvlfshohgx2r3xuq5/Untitled.jpg?rlkey=ivs1y46stld8w3xbfbeadkd2i&st=znzhtd7e?raw=1" alt="Bild 3"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/gstahxl2bi5nvy26yejwm/La-poesie-Cover-scan-copy-Kopie.jpg?rlkey=qunkqlm1gakdj8pagzx7gtz8j&st=h9qzv6u3?raw=1" alt="Bild 2"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/p0blhh3si94ktqyjs8tw4/Buch-1Druckvorlage-1.jpg?rlkey=xdpkp1tk6o0nsd6vwh9ixg3xv&st=19w0ppfd?raw=1" alt="Bild 2"/>
+             <iframe src="https://www.youtube.com/embed/FKvPLU_aBVo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/9hxyxxe3dc34ejzw8baqt/Lampe-frontal2-Kopie-2.jpg?rlkey=hehub6gofdjpr5mfpxmuhbhi2&st=7pmw6zqt?raw=1" alt="Bild 1"/> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/o7fdhaa7srzip7jz20apf/342DA47C-33E9-42F8-B7A7-B0C40A6FE360_1_105_c.jpg?rlkey=hpp6hdz64gt9pjq36if1j3esu&st=ouq0lznm?raw=1" alt="Buch"/>
+             <iframe src="https://www.youtube.com/embed/4NBi-oYTEYo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+           <div class="slide"> <img src="https://dl.dropboxusercontent.com/scl/fi/c8dcm7fl617umclwg6tsl/IMG_5626-Kopie.jpg?rlkey=czhn7nr8rxirnlja1ez1e0xns&st=gwos3mf6?raw=1" alt="Handsatz"/> </div> </div>
+           <a class="arrow left" href="#" onclick="prevSlide()"><--</a>
+          <a class="arrow right" href="#" onclick="nextSlide()">--></a>
+     </div>
+
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+
+    <script> // JavaScript, um Pop-up-Fenster zu zeigen/verstecken und die Slideshow zu steuern
+    document.addEventListener("DOMContentLoaded", function() { // Slideshow - Erste Folie anzeigen
+      showSlide(0); // Alle Navigationselemente auswählen
+      const navLinks = document.querySelectorAll("nav ul li"); // Für jedes Navigationselement Eventlistener hinzufügen
+      navLinks.forEach(link => { link.addEventListener("click", function(e) { e.preventDefault(); // Verhindert das Standardverhalten des Links // Alle Pop-ups verstecken
+        const popups = document.querySelectorAll(".popup"); popups.forEach(popup => { popup.style.display = "none"; }); // Pop-up des geklickten Links anzeigen
+        const popup = this.querySelector(".popup"); popup.style.display = "block"; }); }); // Klick außerhalb eines Pop-ups versteckt alle Pop-ups
+        document.addEventListener("click", function(e) { if (!e.target.closest("nav ul li")) { const popups = document.querySelectorAll(".popup"); popups.forEach(popup => { popup.style.display = "none"; }); } }); }); // Variablen für die Slideshow
+        let currentSlide = 0; const slides = document.querySelectorAll('.slide'); // Funktion zum Anzeigen der Folie
+        function showSlide(index) { slides.forEach((slide, idx) => { slide.style.display = (idx === index) ? 'block' : 'none'; }); } // Funktion zum Anzeigen der nächsten Folie
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); } // Funktion zum Anzeigen der vorherigen Folie
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); } </script>
+</body>
+</html>
